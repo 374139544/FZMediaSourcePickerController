@@ -1,0 +1,58 @@
+{
+    "Favorites":{
+        "en-US":"Favorites",
+        "zh-Hans-US":"个人收藏"
+    },
+    "Recently Deleted":{
+        "en-US":"Recently Deleted",
+        "zh-Hans-US":"最近删除"
+    },
+    "Panoramas":{
+        "en-US":"Panoramas",
+        "zh-Hans-US":"全景照片"
+    },
+    "Camera Roll":{
+        "en-US":"Camera Roll",
+        "zh-Hans-US":"相机胶卷"
+    },
+    "Slo-mo":{
+        "en-US":"Slo-mo",
+        "zh-Hans-US":"慢动作"
+    },
+    "Screenshots":{
+        "en-US":"Screenshots",
+        "zh-Hans-US":"屏幕快照"
+    },
+    "Bursts":{
+        "en-US":"Bursts",
+        "zh-Hans-US":"抓拍？"
+    },
+    "Videos":{
+        "en-US":"Videos",
+        "zh-Hans-US":"视频"
+    },
+    "Selfies":{
+        "en-US":"Selfies",
+        "zh-Hans-US":"自拍"
+    },
+    "Hidden":{
+        "en-US":"Hidden",
+        "zh-Hans-US":"隐藏"
+    },
+    "Time-lapse":{
+        "en-US":"Time-lapse",
+        "zh-Hans-US":"延时摄影"
+    },
+    "Recently Added":{
+        "en-US":"Recently Added",
+        "zh-Hans-US":"最近添加"
+    },
+    "Depth Effect":{
+        "en-US":"Recently Added",
+        "zh-Hans-US":"景深效果"
+    },
+    "Live Photos":{
+        "en-US":"Live Photos",
+        "zh-Hans-US":"Live Photos"
+    }
+}
