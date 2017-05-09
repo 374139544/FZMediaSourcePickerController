@@ -19,8 +19,6 @@ IB_DESIGNABLE
 
 - (instancetype)init
 {
-    self = [super init];
-    
     return [[NSBundle mainBundle] loadNibNamed:@"FZMediaSourceAssetPickerMenuView" owner:self options:nil][0];
 }
 

@@ -45,7 +45,7 @@
     
     [self.view addSubview:self.tableView];
     
-    [FZMediaSourceAlbumService loadAlbumsWithType:((FZMediaSourcePickerController *)self.navigationController).type thumbnailImageSize:((FZMediaSourcePickerController *)self.navigationController).thumbnailImageSize completionHandler:^(NSArray<FZMediaSourceAlbum *> *albums) {
+    [FZMediaSourceAlbumService loadAlbumsWithType:((FZMediaSourcePickerController *)self.navigationController).type thumbnailImageSize:CGSizeMake(100, 100) completionHandler:^(NSArray<FZMediaSourceAlbum *> *albums) {
         
         self.dataList = albums;
         [self.tableView reloadData];

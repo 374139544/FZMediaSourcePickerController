@@ -20,7 +20,6 @@
 @property (nonatomic, weak) id<FZMediaSourcePickerControllerDelegate> delegate;
 
 @property (nonatomic, assign) FZMediaSourceType type;
-@property (nonatomic, assign) CGSize thumbnailImageSize;
 @property (nonatomic, copy)   NSString *defaultAlbumName;
 
 @property (nonatomic, assign) NSUInteger maxSelectedCount;
