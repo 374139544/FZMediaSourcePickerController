@@ -10,7 +10,7 @@
 
 #import <objc/runtime.h>
 
-#import "FZMediaSourceThumbnailImageManager.h"
+#import "FZMediaSourceCacheManager.h"
 
 #define CurrentPHImageRequestIDKey "CurrentPHImageRequestIDKey"
 
@@ -33,7 +33,7 @@
 
 - (void)fz_setImageWithPHAsset:(PHAsset *)asset placeholderImage:(UIImage *)placeholderImage
 {
-    UIImage *image = [[FZMediaSourceThumbnailImageManager shareInstance] getThumbnailImageWithPHAsset:asset];
+    UIImage *image = [[FZMediaSourceCacheManager shareInstance] getSourceImageWithPHAsset:asset];
     
     if (image)
     {
@@ -45,10 +45,38 @@
     
     [[PHImageManager defaultManager] cancelImageRequest:self.currentPHImageRequestID];
 
-    self.currentPHImageRequestID = [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:CGSizeMake(100, 100) contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+    self.currentPHImageRequestID = [[PHImageManager defaultManager] requestImageDataForAsset:asset options:nil resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
+        
+        UIImage *image = [UIImage imageWithData:imageData];
+        
+        self.image = image;
+        [[FZMediaSourceCacheManager shareInstance] putSourceImage:image withPHAsset:asset];
+    }];
+}
+
+- (void)fz_setThumbnailImageWithPHAsset:(PHAsset *)asset thumbnailImageSize:(CGSize)size
+{
+    [self fz_setThumbnailImageWithPHAsset:asset thumbnailImageSize:size placeholderImage:nil];
+}
+
+- (void)fz_setThumbnailImageWithPHAsset:(PHAsset *)asset thumbnailImageSize:(CGSize)size placeholderImage:(UIImage *)placeholderImage
+{
+    UIImage *image = [[FZMediaSourceCacheManager shareInstance] getThumbnailImageWithPHAsset:asset imageSize:size];
+    
+    if (image)
+    {
+        self.image = image;
+        return;
+    }
+    
+    self.image = placeholderImage;
+    
+    [[PHImageManager defaultManager] cancelImageRequest:self.currentPHImageRequestID];
+    
+    self.currentPHImageRequestID = [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
         
         self.image = result;
-        [[FZMediaSourceThumbnailImageManager shareInstance] putThumbnailImage:result withPHAsset:asset];
+        [[FZMediaSourceCacheManager shareInstance] putThumbnailImage:result withPHAsset:asset imageSize:size];
     }];
 }
 

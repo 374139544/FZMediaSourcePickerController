@@ -12,7 +12,7 @@
 
 @implementation FZMediaSourceUtil
 
-+ (NSArray <FZMediaSourceAlbum *>*)fetchSmartAlbumListWithMediaType:(FZMediaSourceType)mediaType
++ (NSArray <PHAssetCollection *>*)fetchSmartAlbumListWithMediaType:(FZMediaSourceType)mediaType
 {
     NSMutableArray *mediaTypes = [NSMutableArray array];
     
@@ -24,46 +24,19 @@
         }
     }
     
-    NSMutableArray <FZMediaSourceAlbum *>*resultList = [NSMutableArray array];
+    NSMutableArray <PHAssetCollection *>*resultList = [NSMutableArray array];
     
     PHFetchResult *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
     
     for (int i = 0; i < smartAlbums.count; i++)
     {
-        FZMediaSourceAlbum *album = [FZMediaSourceAlbum new];
-        
-        PHAssetCollection *collection = [smartAlbums objectAtIndex:i];
-        album.album = collection;
-        
-        PHFetchOptions *options = [[PHFetchOptions alloc] init];
-        options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
-        options.predicate = [NSPredicate predicateWithFormat:@"mediaType in %@", mediaTypes];
-        
-        PHFetchResult *fetchResult = [PHAsset fetchAssetsInAssetCollection:collection options:options];
-        album.count = fetchResult.count;
-        
-        [fetchResult enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            
-            PHAsset *asset = (PHAsset *)obj;
-            
-            PHImageRequestOptions *opt = [[PHImageRequestOptions alloc] init];
-            opt.synchronous = YES;
-            
-            [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:CGSizeMake(100, 100) contentMode:PHImageContentModeAspectFit options:opt resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-                
-                album.image = result;
-            }];
-            
-            *stop = YES;
-        }];
-        
-        [resultList addObject:album];
+        [resultList addObject:[smartAlbums objectAtIndex:i]];
     }
 
     return resultList;
 }
 
-+ (NSArray <FZMediaSourceAlbum *>*)fetchUserAlbumListWithMediaType:(FZMediaSourceType)mediaType
++ (NSArray <PHAssetCollection *>*)fetchUserAlbumListWithMediaType:(FZMediaSourceType)mediaType
 {
     NSMutableArray *mediaTypes = [NSMutableArray array];
     
@@ -75,45 +48,18 @@
         }
     }
     
-    NSMutableArray <FZMediaSourceAlbum *>*resultList = [NSMutableArray array];
+    NSMutableArray <PHAssetCollection *>*resultList = [NSMutableArray array];
     
     PHFetchResult *userAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:nil];
 
     for (int i = 0; i < userAlbums.count; i++)
     {
-        FZMediaSourceAlbum *album = [FZMediaSourceAlbum new];
-        
-        PHAssetCollection *collection = [userAlbums objectAtIndex:i];
-        album.album = collection;
-        
-        PHFetchOptions *options = [[PHFetchOptions alloc] init];
-        options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
-        options.predicate = [NSPredicate predicateWithFormat:@"mediaType in %@", mediaTypes];
-        
-        PHFetchResult *fetchResult = [PHAsset fetchAssetsInAssetCollection:collection options:options];
-        album.count = fetchResult.count;
-        
-        [fetchResult enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            
-            PHAsset *asset = (PHAsset *)obj;
-            
-            PHImageRequestOptions *opt = [[PHImageRequestOptions alloc] init];
-            opt.synchronous = YES;
-            
-            [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:CGSizeMake(100, 100) contentMode:PHImageContentModeAspectFit options:opt resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-                
-                album.image = result;
-            }];
-            
-            *stop = YES;
-        }];
-        
-        [resultList addObject:album];
+        [resultList addObject:[userAlbums objectAtIndex:i]];
     }
     return resultList;
 }
 
-+ (NSArray <FZMediaSourceAlbum *>*)fetchAllAlbumListWithMediaType:(FZMediaSourceType)mediaType
++ (NSArray <PHAssetCollection *>*)fetchAllAlbumListWithMediaType:(FZMediaSourceType)mediaType
 {
     NSArray *list1 = [self fetchSmartAlbumListWithMediaType:mediaType];
     NSArray *list2 = [self fetchUserAlbumListWithMediaType:mediaType];

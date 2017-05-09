@@ -10,6 +10,8 @@
 
 #import <Photos/Photos.h>
 
+#import "UIImageView+PHAsset.h"
+
 @interface FZMediaSourcePreviewCell ()
 
 @property (nonatomic, strong) UIImageView *imageView;
@@ -43,10 +45,7 @@
 {
     _asset = asset;
     
-    [[PHImageManager defaultManager] requestImageDataForAsset:_asset options:nil resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
-       
-        self.imageView.image = [UIImage imageWithData:imageData];
-    }];
+    [self.imageView fz_setImageWithPHAsset:_asset];
 }
 
 @end

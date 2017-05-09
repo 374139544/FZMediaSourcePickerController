@@ -15,6 +15,7 @@
 #import "FZMediaSourceAlbum.h"
 
 #import "FZMediaSourceUtil.h"
+#import "FZMediaSourceAlbumService.h"
 
 #import "FZMediaSourceAssetPickerViewController.h"
 
@@ -44,8 +45,11 @@
     
     [self.view addSubview:self.tableView];
     
-    self.dataList = [FZMediaSourceUtil fetchAllAlbumListWithMediaType:((FZMediaSourcePickerController *)self.navigationController).type];
-    [self.tableView reloadData];
+    [FZMediaSourceAlbumService loadAlbumsWithType:((FZMediaSourcePickerController *)self.navigationController).type thumbnailImageSize:((FZMediaSourcePickerController *)self.navigationController).thumbnailImageSize completionHandler:^(NSArray<FZMediaSourceAlbum *> *albums) {
+        
+        self.dataList = albums;
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated

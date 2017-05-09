@@ -105,7 +105,7 @@
     
     [self.view addSubview:self.menuView];
     
-    [FZMediaSourceAssetService loadAssetsWithAlbum:self.album.album type:navC.type thumbnailImageSize:CGSizeMake(30, 30) completionHandler:^(NSArray<FZMediaSourceAssetItem *> *dataList) {
+    [FZMediaSourceAssetService loadAssetsWithAlbum:self.album.album type:navC.type completionHandler:^(NSArray<FZMediaSourceAssetItem *> *dataList) {
        
         weakSelf.dataList = dataList;
         [weakSelf.collectionView reloadData];

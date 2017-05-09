@@ -23,9 +23,9 @@ typedef NS_OPTIONS(NSUInteger, FZMediaSourceType)
 
 @interface FZMediaSourceUtil : NSObject
 
-+ (NSArray <FZMediaSourceAlbum *>*)fetchSmartAlbumListWithMediaType:(FZMediaSourceType)mediaType;
-+ (NSArray <FZMediaSourceAlbum *>*)fetchUserAlbumListWithMediaType:(FZMediaSourceType)mediaType;
-+ (NSArray <FZMediaSourceAlbum *>*)fetchAllAlbumListWithMediaType:(FZMediaSourceType)mediaType;
++ (NSArray <PHAssetCollection *>*)fetchSmartAlbumListWithMediaType:(FZMediaSourceType)mediaType;
++ (NSArray <PHAssetCollection *>*)fetchUserAlbumListWithMediaType:(FZMediaSourceType)mediaType;
++ (NSArray <PHAssetCollection *>*)fetchAllAlbumListWithMediaType:(FZMediaSourceType)mediaType;
 
 + (PHFetchResult *)fetchAssetsFromAlbumWithName:(NSString *)albumName sourcrType:(FZMediaSourceType)type;
 + (PHFetchResult *)fetchAssetsFromAlbum:(PHAssetCollection *)album sourcrType:(FZMediaSourceType)type;

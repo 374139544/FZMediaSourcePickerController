@@ -14,6 +14,6 @@
 
 @interface FZMediaSourceAssetService : NSObject
 
-+ (void)loadAssetsWithAlbum:(PHAssetCollection *)album type:(FZMediaSourceType)type thumbnailImageSize:(CGSize)thumbnailImageSize completionHandler:(void(^)(NSArray <FZMediaSourceAssetItem *>*))completionHandler;
++ (void)loadAssetsWithAlbum:(PHAssetCollection *)album type:(FZMediaSourceType)type completionHandler:(void(^)(NSArray <FZMediaSourceAssetItem *>*))completionHandler;
 
 @end

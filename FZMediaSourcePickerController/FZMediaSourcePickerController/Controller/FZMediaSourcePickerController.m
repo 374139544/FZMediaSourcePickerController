@@ -11,7 +11,7 @@
 #import "FZMediaSourceAlbumPickerViewController.h"
 
 #import "FZMediaSourceAlbumNameInternationalizationService.h"
-#import "FZMediaSourceThumbnailImageManager.h"
+#import "FZMediaSourceCacheManager.h"
 
 @interface FZMediaSourcePickerController ()
 
@@ -41,9 +41,17 @@
 
 - (void)onCancle
 {
-    [[FZMediaSourceThumbnailImageManager shareInstance] clearAllCache];
+    [[FZMediaSourceCacheManager shareInstance] clearAllCache];
     [[FZMediaSourceAlbumNameInternationalizationService shareInstance] clear];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    
+    [[FZMediaSourceCacheManager shareInstance] clearAllCache];
+    [[FZMediaSourceAlbumNameInternationalizationService shareInstance] clear];
 }
 
 @end

@@ -26,7 +26,7 @@
 		5D3CB8DC1EBC8CD200E9A1C0 /* FZAlbumLocalizedString.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D3CB8B91EBC8CD200E9A1C0 /* FZAlbumLocalizedString.json */; };
 		5D3CB8DD1EBC8CD200E9A1C0 /* FZMediaSourceAlbumNameInternationalizationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CB8BC1EBC8CD200E9A1C0 /* FZMediaSourceAlbumNameInternationalizationService.m */; };
 		5D3CB8DE1EBC8CD200E9A1C0 /* FZMediaSourceAssetService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CB8BE1EBC8CD200E9A1C0 /* FZMediaSourceAssetService.m */; };
-		5D3CB8DF1EBC8CD200E9A1C0 /* FZMediaSourceThumbnailImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CB8C01EBC8CD200E9A1C0 /* FZMediaSourceThumbnailImageManager.m */; };
+		5D3CB8DF1EBC8CD200E9A1C0 /* FZMediaSourceCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CB8C01EBC8CD200E9A1C0 /* FZMediaSourceCacheManager.m */; };
 		5D3CB8E01EBC8CD200E9A1C0 /* FZMediaSourceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CB8C41EBC8CD200E9A1C0 /* FZMediaSourceUtil.m */; };
 		5D3CB8E11EBC8CD200E9A1C0 /* FZMediaSourceAlbumPickerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CB8C71EBC8CD200E9A1C0 /* FZMediaSourceAlbumPickerViewCell.m */; };
 		5D3CB8E21EBC8CD200E9A1C0 /* FZMediaSourceAlbumPickerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D3CB8C81EBC8CD200E9A1C0 /* FZMediaSourceAlbumPickerViewCell.xib */; };
@@ -36,6 +36,7 @@
 		5D3CB8E61EBC8CD200E9A1C0 /* FZMediaSourceAssetPickerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D3CB8CE1EBC8CD200E9A1C0 /* FZMediaSourceAssetPickerViewCell.xib */; };
 		5D3CB8E71EBC8CD200E9A1C0 /* FZMediaSourcePreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CB8D01EBC8CD200E9A1C0 /* FZMediaSourcePreviewCell.m */; };
 		5D3CB8E81EBC8CD200E9A1C0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CB8D21EBC8CD200E9A1C0 /* ViewController.m */; };
+		5DB54C691EC1B5AC00436331 /* FZMediaSourceAlbumService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB54C681EC1B5AC00436331 /* FZMediaSourceAlbumService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,8 +95,8 @@
 		5D3CB8BC1EBC8CD200E9A1C0 /* FZMediaSourceAlbumNameInternationalizationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZMediaSourceAlbumNameInternationalizationService.m; sourceTree = "<group>"; };
 		5D3CB8BD1EBC8CD200E9A1C0 /* FZMediaSourceAssetService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZMediaSourceAssetService.h; sourceTree = "<group>"; };
 		5D3CB8BE1EBC8CD200E9A1C0 /* FZMediaSourceAssetService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZMediaSourceAssetService.m; sourceTree = "<group>"; };
-		5D3CB8BF1EBC8CD200E9A1C0 /* FZMediaSourceThumbnailImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZMediaSourceThumbnailImageManager.h; sourceTree = "<group>"; };
-		5D3CB8C01EBC8CD200E9A1C0 /* FZMediaSourceThumbnailImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZMediaSourceThumbnailImageManager.m; sourceTree = "<group>"; };
+		5D3CB8BF1EBC8CD200E9A1C0 /* FZMediaSourceCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZMediaSourceCacheManager.h; sourceTree = "<group>"; };
+		5D3CB8C01EBC8CD200E9A1C0 /* FZMediaSourceCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZMediaSourceCacheManager.m; sourceTree = "<group>"; };
 		5D3CB8C11EBC8CD200E9A1C0 /* SingleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleModel.h; sourceTree = "<group>"; };
 		5D3CB8C31EBC8CD200E9A1C0 /* FZMediaSourceUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZMediaSourceUtil.h; sourceTree = "<group>"; };
 		5D3CB8C41EBC8CD200E9A1C0 /* FZMediaSourceUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZMediaSourceUtil.m; sourceTree = "<group>"; };
@@ -112,6 +113,8 @@
 		5D3CB8D01EBC8CD200E9A1C0 /* FZMediaSourcePreviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZMediaSourcePreviewCell.m; sourceTree = "<group>"; };
 		5D3CB8D11EBC8CD200E9A1C0 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		5D3CB8D21EBC8CD200E9A1C0 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5DB54C671EC1B5AC00436331 /* FZMediaSourceAlbumService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZMediaSourceAlbumService.h; sourceTree = "<group>"; };
+		5DB54C681EC1B5AC00436331 /* FZMediaSourceAlbumService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZMediaSourceAlbumService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,8 +283,10 @@
 				5D3CB8BC1EBC8CD200E9A1C0 /* FZMediaSourceAlbumNameInternationalizationService.m */,
 				5D3CB8BD1EBC8CD200E9A1C0 /* FZMediaSourceAssetService.h */,
 				5D3CB8BE1EBC8CD200E9A1C0 /* FZMediaSourceAssetService.m */,
-				5D3CB8BF1EBC8CD200E9A1C0 /* FZMediaSourceThumbnailImageManager.h */,
-				5D3CB8C01EBC8CD200E9A1C0 /* FZMediaSourceThumbnailImageManager.m */,
+				5D3CB8BF1EBC8CD200E9A1C0 /* FZMediaSourceCacheManager.h */,
+				5D3CB8C01EBC8CD200E9A1C0 /* FZMediaSourceCacheManager.m */,
+				5DB54C671EC1B5AC00436331 /* FZMediaSourceAlbumService.h */,
+				5DB54C681EC1B5AC00436331 /* FZMediaSourceAlbumService.m */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -463,12 +468,13 @@
 				5D3CB8D61EBC8CD200E9A1C0 /* FZMediaSourcePickerController.m in Sources */,
 				5D3CB8D51EBC8CD200E9A1C0 /* FZMediaSourceAssetPickerViewController.m in Sources */,
 				5D3CB8E11EBC8CD200E9A1C0 /* FZMediaSourceAlbumPickerViewCell.m in Sources */,
-				5D3CB8DF1EBC8CD200E9A1C0 /* FZMediaSourceThumbnailImageManager.m in Sources */,
+				5D3CB8DF1EBC8CD200E9A1C0 /* FZMediaSourceCacheManager.m in Sources */,
 				5D3CB8E51EBC8CD200E9A1C0 /* FZMediaSourceAssetPickerViewCell.m in Sources */,
 				5D3CB8E01EBC8CD200E9A1C0 /* FZMediaSourceUtil.m in Sources */,
 				5D3CB8D81EBC8CD200E9A1C0 /* FZMediaSourceVideoPreviewViewController.m in Sources */,
 				5D3CB8E81EBC8CD200E9A1C0 /* ViewController.m in Sources */,
 				5D3CB8D91EBC8CD200E9A1C0 /* FZMediaSourceAlbum.m in Sources */,
+				5DB54C691EC1B5AC00436331 /* FZMediaSourceAlbumService.m in Sources */,
 				5D3CB8DB1EBC8CD200E9A1C0 /* FZMediaSourceAssetItem.m in Sources */,
 				5D3CB86F1EBC8C7D00E9A1C0 /* main.m in Sources */,
 				5D3CB8D71EBC8CD200E9A1C0 /* FZMediaSourcePreviewViewController.m in Sources */,
