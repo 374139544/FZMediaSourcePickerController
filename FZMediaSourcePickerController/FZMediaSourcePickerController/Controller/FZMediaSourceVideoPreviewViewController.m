@@ -9,6 +9,7 @@
 #import "FZMediaSourceVideoPreviewViewController.h"
 
 #import <Photos/Photos.h>
+#import "FZMediaSourcePickerController.h"
 
 #import "FZMediaSourceVideoPreviewBottomView.h"
 
@@ -32,11 +33,19 @@
     self.playerLayer = [AVPlayerLayer layer];
     [self.view.layer addSublayer:self.playerLayer];
     
+    __weak typeof(FZMediaSourceVideoPreviewViewController *)weakSelf = self;
     self.bottomView = [[FZMediaSourceVideoPreviewBottomView alloc] init];
     self.bottomView.editButtonClickBlock = ^{
         
     };
     self.bottomView.decideButtonClickBlock = ^{
+        
+        FZMediaSourcePickerController *navC = (FZMediaSourcePickerController *)weakSelf.navigationController;
+        
+        if ([navC.delegate respondsToSelector:@selector(mediaSourcePickerController:didFinishPickingAsset:)])
+        {
+            [navC.delegate mediaSourcePickerController:navC didFinishPickingAsset:@[weakSelf.asset]];
+        }
         
     };
     [self.view addSubview:self.bottomView];

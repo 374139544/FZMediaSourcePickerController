@@ -9,6 +9,8 @@
 #import "FZMediaSourcePreviewViewController.h"
 
 #import "FZMediaSourcePreviewCell.h"
+#import "FZMediaSourceVideoPreviewBottomView.h"
+#import "FZMediaSourcePickerController.h"
 
 #import "FZMediaSourceAssetItem.h"
 
@@ -22,6 +24,7 @@
 @property (nonatomic, strong) NSIndexPath *indexPath;
 
 @property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) FZMediaSourceVideoPreviewBottomView *bottomView;
 
 @end
 
@@ -58,6 +61,31 @@
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     [self.view addSubview:self.collectionView];
+    
+    __weak typeof(FZMediaSourcePreviewViewController *)weakSelf = self;
+    self.bottomView = [[FZMediaSourceVideoPreviewBottomView alloc] init];
+    self.bottomView.editButtonClickBlock = ^{
+        
+    };
+    self.bottomView.decideButtonClickBlock = ^{
+        
+        FZMediaSourcePickerController *navC = (FZMediaSourcePickerController *)weakSelf.navigationController;
+        
+        if ([navC.delegate respondsToSelector:@selector(mediaSourcePickerController:didFinishPickingAsset:)])
+        {
+            NSMutableArray *resultList = [NSMutableArray array];
+            
+            for (int i = 0; i < weakSelf.assets.count; i ++)
+            {
+                if (weakSelf.assets[i].selected)
+                {
+                    [resultList addObject:weakSelf.assets[i].asset];
+                }
+            }
+            [navC.delegate mediaSourcePickerController:navC didFinishPickingAsset:resultList];
+        }
+    };
+    [self.view addSubview:self.bottomView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -76,6 +104,7 @@
     
     self.collectionView.frame = self.view.bounds;
     ((UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout).itemSize = self.view.bounds.size;
+    self.bottomView.frame = CGRectMake(0, self.view.bounds.size.height - 44, self.view.bounds.size.width, 44);
 }
 
 - (void)onRightButtonClick:(UIButton *)sender
