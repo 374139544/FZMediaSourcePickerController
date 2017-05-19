@@ -36,6 +36,7 @@
 		5D3CB8E61EBC8CD200E9A1C0 /* FZMediaSourceAssetPickerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D3CB8CE1EBC8CD200E9A1C0 /* FZMediaSourceAssetPickerViewCell.xib */; };
 		5D3CB8E71EBC8CD200E9A1C0 /* FZMediaSourcePreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CB8D01EBC8CD200E9A1C0 /* FZMediaSourcePreviewCell.m */; };
 		5D3CB8E81EBC8CD200E9A1C0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3CB8D21EBC8CD200E9A1C0 /* ViewController.m */; };
+		5D791AE81ECEBB090001E5B0 /* UIButton+PHAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D791AE71ECEBB090001E5B0 /* UIButton+PHAsset.m */; };
 		5DB54C691EC1B5AC00436331 /* FZMediaSourceAlbumService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB54C681EC1B5AC00436331 /* FZMediaSourceAlbumService.m */; };
 		5DB54C6C1EC1CE3200436331 /* FZMediaSourceVideoPreviewBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB54C6B1EC1CE3200436331 /* FZMediaSourceVideoPreviewBottomView.m */; };
 		5DB54C6E1EC1CE4800436331 /* FZMediaSourceVideoPreviewBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DB54C6D1EC1CE4800436331 /* FZMediaSourceVideoPreviewBottomView.xib */; };
@@ -115,6 +116,8 @@
 		5D3CB8D01EBC8CD200E9A1C0 /* FZMediaSourcePreviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZMediaSourcePreviewCell.m; sourceTree = "<group>"; };
 		5D3CB8D11EBC8CD200E9A1C0 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		5D3CB8D21EBC8CD200E9A1C0 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5D791AE61ECEBB090001E5B0 /* UIButton+PHAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+PHAsset.h"; sourceTree = "<group>"; };
+		5D791AE71ECEBB090001E5B0 /* UIButton+PHAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+PHAsset.m"; sourceTree = "<group>"; };
 		5DB54C671EC1B5AC00436331 /* FZMediaSourceAlbumService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZMediaSourceAlbumService.h; sourceTree = "<group>"; };
 		5DB54C681EC1B5AC00436331 /* FZMediaSourceAlbumService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FZMediaSourceAlbumService.m; sourceTree = "<group>"; };
 		5DB54C6A1EC1CE3200436331 /* FZMediaSourceVideoPreviewBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZMediaSourceVideoPreviewBottomView.h; sourceTree = "<group>"; };
@@ -231,6 +234,8 @@
 			children = (
 				5D3CB8A21EBC8CD100E9A1C0 /* UIImageView+PHAsset.h */,
 				5D3CB8A31EBC8CD100E9A1C0 /* UIImageView+PHAsset.m */,
+				5D791AE61ECEBB090001E5B0 /* UIButton+PHAsset.h */,
+				5D791AE71ECEBB090001E5B0 /* UIButton+PHAsset.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -477,6 +482,7 @@
 				5D3CB8D61EBC8CD200E9A1C0 /* FZMediaSourcePickerController.m in Sources */,
 				5D3CB8D51EBC8CD200E9A1C0 /* FZMediaSourceAssetPickerViewController.m in Sources */,
 				5D3CB8E11EBC8CD200E9A1C0 /* FZMediaSourceAlbumPickerViewCell.m in Sources */,
+				5D791AE81ECEBB090001E5B0 /* UIButton+PHAsset.m in Sources */,
 				5D3CB8DF1EBC8CD200E9A1C0 /* FZMediaSourceCacheManager.m in Sources */,
 				5D3CB8E51EBC8CD200E9A1C0 /* FZMediaSourceAssetPickerViewCell.m in Sources */,
 				5DB54C6C1EC1CE3200436331 /* FZMediaSourceVideoPreviewBottomView.m in Sources */,
