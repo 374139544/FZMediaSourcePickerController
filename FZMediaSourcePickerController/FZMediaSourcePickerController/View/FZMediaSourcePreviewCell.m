@@ -10,7 +10,7 @@
 
 #import <Photos/Photos.h>
 
-#import "UIImageView+PHAsset.h"
+#import "UIImageView+FZPHAsset.h"
 
 @interface FZMediaSourcePreviewCell ()
 

@@ -6,15 +6,16 @@
 //  Copyright © 2017年 fengzhao. All rights reserved.
 //
 
-#import "UIImageView+PHAsset.h"
+#import "UIImageView+FZPHAsset.h"
 
 #import <objc/runtime.h>
+#import <Photos/Photos.h>
 
 #import "FZMediaSourceCacheManager.h"
 
 #define CurrentPHImageRequestIDKey "CurrentPHImageRequestIDKey"
 
-@implementation UIImageView (PHAsset)
+@implementation UIImageView (FZPHAsset)
 
 - (PHImageRequestID)currentPHImageRequestID
 {

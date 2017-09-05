@@ -8,6 +8,8 @@
 
 #import "FZMediaSourceCacheManager.h"
 
+#import <Photos/Photos.h>
+
 @interface FZMediaSourceCacheManager ()
 
 @property (nonatomic, strong) NSMutableDictionary <NSString *, UIImage *>*cacheDict;

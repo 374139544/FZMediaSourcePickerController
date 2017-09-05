@@ -6,11 +6,11 @@
 //  Copyright © 2017年 fengzhao. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-#import <Photos/Photos.h>
+#import <UIKit/UIKit.h>
 
 #import "SingleModel.h"
+
+@class PHAsset;
 
 @interface FZMediaSourceCacheManager : NSObject
 

@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIButton (PHAsset)
+@class PHAsset;
+
+@interface UIButton (FZPHAsset)
 
 - (void)fz_setImageWithPHAsset:(PHAsset *)asset forState:(UIControlState)state;
 - (void)fz_setImageWithPHAsset:(PHAsset *)asset placeholderImage:(UIImage *)placeholderImage forState:(UIControlState)state;

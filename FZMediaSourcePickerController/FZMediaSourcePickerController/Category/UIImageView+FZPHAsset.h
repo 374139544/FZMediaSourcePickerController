@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import <Photos/Photos.h>
+@class PHAsset;
 
-@interface UIImageView (PHAsset)
+@interface UIImageView (FZPHAsset)
 
 - (void)fz_setImageWithPHAsset:(PHAsset *)asset;
 

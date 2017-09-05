@@ -6,14 +6,15 @@
 //  Copyright © 2017年 ninth. All rights reserved.
 //
 
-#import "UIButton+PHAsset.h"
+#import "UIButton+FZPHAsset.h"
 #import <objc/runtime.h>
+#import <Photos/Photos.h>
 
 #import "FZMediaSourceCacheManager.h"
 
 #define CurrentPHImageRequestIDKey "CurrentPHImageRequestIDKey"
 
-@implementation UIButton (PHAsset)
+@implementation UIButton (FZPHAsset)
 
 - (PHImageRequestID)currentPHImageRequestID
 {
@@ -32,7 +33,7 @@
 
 - (void)fz_setImageWithPHAsset:(PHAsset *)asset placeholderImage:(UIImage *)placeholderImage forState:(UIControlState)state
 {
-    UIImage *image = [[FZMediaSourceCacheManager shareManeger] getSourceImageWithPHAsset:asset];
+    UIImage *image = [[FZMediaSourceCacheManager shareInstance] getSourceImageWithPHAsset:asset];
     
     if (image)
     {
@@ -50,7 +51,7 @@
         
         [self setImage:image forState:state];
 
-        [[FZMediaSourceCacheManager shareManeger] putSourceImage:image withPHAsset:asset];
+        [[FZMediaSourceCacheManager shareInstance] putSourceImage:image withPHAsset:asset];
     }];
 }
 
@@ -61,7 +62,7 @@
 
 - (void)fz_setThumbnailImageWithPHAsset:(PHAsset *)asset thumbnailImageSize:(CGSize)size placeholderImage:(UIImage *)placeholderImage forState:(UIControlState)state
 {
-    UIImage *image = [[FZMediaSourceCacheManager shareManeger] getThumbnailImageWithPHAsset:asset imageSize:size];
+    UIImage *image = [[FZMediaSourceCacheManager shareInstance] getThumbnailImageWithPHAsset:asset imageSize:size];
     
     if (image)
     {
@@ -76,7 +77,7 @@
     self.currentPHImageRequestID = [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
         
         [self setImage:result forState:state];
-        [[FZMediaSourceCacheManager shareManeger] putThumbnailImage:result withPHAsset:asset imageSize:size];
+        [[FZMediaSourceCacheManager shareInstance] putThumbnailImage:result withPHAsset:asset imageSize:size];
     }];
 }
 
@@ -87,7 +88,7 @@
 
 - (void)fz_setBackgroundImageWithPHAsset:(PHAsset *)asset placeholderImage:(UIImage *)placeholderImage forState:(UIControlState)state
 {
-    UIImage *image = [[FZMediaSourceCacheManager shareManeger] getSourceImageWithPHAsset:asset];
+    UIImage *image = [[FZMediaSourceCacheManager shareInstance] getSourceImageWithPHAsset:asset];
     
     if (image)
     {
@@ -105,7 +106,7 @@
         
         [self setBackgroundImage:image forState:state];
         
-        [[FZMediaSourceCacheManager shareManeger] putSourceImage:image withPHAsset:asset];
+        [[FZMediaSourceCacheManager shareInstance] putSourceImage:image withPHAsset:asset];
     }];
 }
 
@@ -116,7 +117,7 @@
 
 - (void)fz_setBackgroundThumbnailImageWithPHAsset:(PHAsset *)asset thumbnailImageSize:(CGSize)size placeholderImage:(UIImage *)placeholderImage forState:(UIControlState)state
 {
-    UIImage *image = [[FZMediaSourceCacheManager shareManeger] getThumbnailImageWithPHAsset:asset imageSize:size];
+    UIImage *image = [[FZMediaSourceCacheManager shareInstance] getThumbnailImageWithPHAsset:asset imageSize:size];
     
     if (image)
     {
@@ -131,7 +132,7 @@
     self.currentPHImageRequestID = [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
         
         [self setBackgroundImage:result forState:state];
-        [[FZMediaSourceCacheManager shareManeger] putThumbnailImage:result withPHAsset:asset imageSize:size];
+        [[FZMediaSourceCacheManager shareInstance] putThumbnailImage:result withPHAsset:asset imageSize:size];
     }];
 }
 

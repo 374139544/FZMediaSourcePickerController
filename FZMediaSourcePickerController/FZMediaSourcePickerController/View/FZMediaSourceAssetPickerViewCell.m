@@ -12,7 +12,7 @@
 
 #import "FZMediaSourceAssetItem.h"
 
-#import "UIImageView+PHAsset.h"
+#import "UIImageView+FZPHAsset.h"
 
 @interface FZMediaSourceAssetPickerViewCell ()
 
