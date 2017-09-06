@@ -45,7 +45,7 @@
 {
     _asset = asset;
     
-    [self.imageView fz_setImageWithPHAsset:_asset];
+    [self.imageView fz_setImageWithPHAsset:_asset imageSize:CGSizeZero];
 }
 
 @end

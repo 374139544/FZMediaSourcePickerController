@@ -23,15 +23,15 @@
         return;
     }
     
+    NSMutableArray *resultList = [NSMutableArray array];
+
     PHFetchResult *assetList = [FZMediaSourceUtil fetchAssetsFromAlbum:album sourcrType:type];
 
     if (!assetList || assetList.count <= 0)
     {
-        completionHandler(nil);
+        completionHandler(resultList);
         return;
     }
-    
-    NSMutableArray *resultList = [NSMutableArray array];
     
     for (int i = 0; i < assetList.count; i ++)
     {

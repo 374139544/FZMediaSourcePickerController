@@ -54,7 +54,7 @@
             opt.synchronous = YES;
             
             [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:thumbnailImageSize contentMode:PHImageContentModeAspectFit options:opt resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-                
+                if ([info[PHImageResultIsDegradedKey] boolValue]) return;
                 album.image = result;
             }];
             

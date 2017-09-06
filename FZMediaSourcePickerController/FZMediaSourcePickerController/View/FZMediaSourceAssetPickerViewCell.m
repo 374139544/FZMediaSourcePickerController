@@ -37,8 +37,11 @@
     
     self.selectButton.selected = _assetItem.isSelected;
     
-    [self.backgroundImageView fz_setThumbnailImageWithPHAsset:_assetItem.asset thumbnailImageSize:CGSizeMake(100, 100)];
-    self.videoDurationLabel.text = [NSString stringWithFormat:@"%02d:%02d", (int)_assetItem.asset.duration / 60, (int)_assetItem.asset.duration % 60];
+    [self.backgroundImageView fz_setImageWithPHAsset:_assetItem.asset imageSize:CGSizeMake(100, 100)];
+    if (_assetItem.asset.mediaType == PHAssetMediaTypeVideo)
+    {
+        self.videoDurationLabel.text = [NSString stringWithFormat:@"%02d:%02d", (int)_assetItem.asset.duration / 60, (int)_assetItem.asset.duration % 60];
+    }
 }
 
 - (IBAction)selectButtonClick:(UIButton *)sender

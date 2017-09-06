@@ -21,6 +21,8 @@ typedef NS_OPTIONS(NSUInteger, FZMediaSourceType)
     FZMediaSourceTypeAll     = 15
 };
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface FZMediaSourceUtil : NSObject
 
 + (NSArray <PHAssetCollection *>*)fetchSmartAlbumListWithMediaType:(FZMediaSourceType)mediaType;
@@ -30,6 +32,8 @@ typedef NS_OPTIONS(NSUInteger, FZMediaSourceType)
 + (PHFetchResult *)fetchAssetsFromAlbumWithName:(NSString *)albumName sourcrType:(FZMediaSourceType)type;
 + (PHFetchResult *)fetchAssetsFromAlbum:(PHAssetCollection *)album sourcrType:(FZMediaSourceType)type;
 
-+ (PHAssetCollection *)fetchAlbumWithName:(NSString *)albumName;
++ (nullable PHAssetCollection *)fetchAlbumWithName:(NSString *)albumName;
 
 @end
+
+NS_ASSUME_NONNULL_END

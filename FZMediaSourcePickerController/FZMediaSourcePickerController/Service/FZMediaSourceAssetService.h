@@ -12,8 +12,12 @@
 
 @class FZMediaSourceAssetItem;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface FZMediaSourceAssetService : NSObject
 
 + (void)loadAssetsWithAlbum:(PHAssetCollection *)album type:(FZMediaSourceType)type completionHandler:(void(^)(NSArray <FZMediaSourceAssetItem *>*))completionHandler;
 
 @end
+
+NS_ASSUME_NONNULL_END

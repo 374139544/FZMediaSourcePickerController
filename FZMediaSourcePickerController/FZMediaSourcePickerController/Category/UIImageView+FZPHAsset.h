@@ -12,12 +12,17 @@
 
 @interface UIImageView (FZPHAsset)
 
-- (void)fz_setImageWithPHAsset:(PHAsset *)asset;
+/**
+ 从PHAsset中获取图片并显示
+ @param size 需要显示的图片的大小，如果是CGSizeZero，则代表原图
+ */
+- (void)fz_setImageWithPHAsset:(PHAsset *)asset imageSize:(CGSize)size;
 
-- (void)fz_setImageWithPHAsset:(PHAsset *)asset placeholderImage:(UIImage *)placeholderImage;
-
-- (void)fz_setThumbnailImageWithPHAsset:(PHAsset *)asset thumbnailImageSize:(CGSize)size;
-
-- (void)fz_setThumbnailImageWithPHAsset:(PHAsset *)asset thumbnailImageSize:(CGSize)size placeholderImage:(UIImage *)placeholderImage;
+/**
+ 从PHAsset中获取图片并显示
+ @param size 需要显示的图片的大小，如果是CGSizeZero，则代表原图
+ @param placeholderImage 获取到图片之前显示的占位图
+ */
+- (void)fz_setImageWithPHAsset:(PHAsset *)asset imageSize:(CGSize)size placeholderImage:(UIImage *)placeholderImage;
 
 @end

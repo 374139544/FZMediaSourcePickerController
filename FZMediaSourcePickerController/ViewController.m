@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "FZMediaSourcePickerController.h"
-
+#import "FPSDisplay.h"
 
 @interface ViewController () <FZMediaSourcePickerControllerDelegate>
 
@@ -20,6 +20,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [FPSDisplay shareFPSDisplay];
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event

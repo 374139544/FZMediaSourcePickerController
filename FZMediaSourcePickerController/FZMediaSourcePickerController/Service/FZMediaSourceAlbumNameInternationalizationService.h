@@ -10,6 +10,8 @@
 
 #import "SingleModel.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface FZMediaSourceAlbumNameInternationalizationService : NSObject
 
 SingleModelInterface
@@ -19,3 +21,5 @@ SingleModelInterface
 - (void)clear;
 
 @end
+
+NS_ASSUME_NONNULL_END

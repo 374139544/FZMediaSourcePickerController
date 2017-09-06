@@ -12,8 +12,12 @@
 
 @class FZMediaSourceAlbum;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface FZMediaSourceAlbumService : NSObject
 
 + (void)loadAlbumsWithType:(FZMediaSourceType)type thumbnailImageSize:(CGSize)thumbnailImageSize completionHandler:(void(^)(NSArray <FZMediaSourceAlbum *>*))completionHandler;
 
 @end
+
+NS_ASSUME_NONNULL_END
