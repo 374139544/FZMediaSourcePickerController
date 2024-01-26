@@ -23,7 +23,7 @@
 
 @interface FZMediaSourceAVAssetGeneratorCacheManager ()
 
-@property (nonatomic, strong) NSMutableDictionary <NSString *, NSMutableDictionary<NSString *, FZMediaSourceAVAssetGeneratorCacheObject *>*>*cacheDict;
+@property (nonatomic, strong) NSMutableDictionary <NSString *, NSCache<NSString *, FZMediaSourceAVAssetGeneratorCacheObject *>*>*cacheDict;
 @property (nonatomic, strong) dispatch_queue_t cacheManagerQueue;
 
 @end
@@ -37,26 +37,26 @@ SingleModelImplementation
     dispatch_async(self.cacheManagerQueue, ^{
         NSString *assetKey = [NSString stringWithFormat:@"%p", imageGenerator];
         
-        NSMutableDictionary <NSString *, FZMediaSourceAVAssetGeneratorCacheObject *>*dict = self.cacheDict[assetKey];
+        NSCache <NSString *, FZMediaSourceAVAssetGeneratorCacheObject *>*cache = self.cacheDict[assetKey];
         
-        if (!dict)
+        if (!cache)
         {
-            dict = [NSMutableDictionary dictionary];
-            self.cacheDict[assetKey] = dict;
+            cache = [[NSCache alloc] init];
+            cache.countLimit = MaxCacheImageCount;
+            self.cacheDict[assetKey] = cache;
         }
         
         NSString *key = [NSString stringWithFormat:@"%lld/%d_%f*%f", time.value, time.timescale, image.size.width, image.size.height];
         
-        if (!dict[key])
+        FZMediaSourceAVAssetGeneratorCacheObject *obj = [cache objectForKey:key];
+        if (!obj)
         {
-            dict[key] = [FZMediaSourceAVAssetGeneratorCacheObject new];
+            obj = [FZMediaSourceAVAssetGeneratorCacheObject new];
+            [cache setObject:obj forKey:key];
         }
-        
-        dict[key].image = image;
-        dict[key].size = image.size;
-        dict[key].time = time;
-        
-        [self autoClearCacheWithImageGenerator:imageGenerator size:image.size currentTime:time];
+        obj.image = image;
+        obj.size = image.size;
+        obj.time = time;
     });
 }
 
@@ -66,7 +66,7 @@ SingleModelImplementation
     dispatch_sync(self.cacheManagerQueue, ^{
         NSString *assetKey = [NSString stringWithFormat:@"%p", imageGenerator];
         NSString *key = [NSString stringWithFormat:@"%lld/%d_%f*%f", time.value, time.timescale, size.width, size.height];
-        returnImage = self.cacheDict[assetKey][key].image;
+        returnImage = [self.cacheDict[assetKey] objectForKey:key].image;
     });
     
     return returnImage;
@@ -85,77 +85,6 @@ SingleModelImplementation
     dispatch_async(self.cacheManagerQueue, ^{
         [self.cacheDict removeAllObjects];
     });
-}
-
-- (void)autoClearCacheWithImageGenerator:(AVAssetImageGenerator *)imageGenerator size:(CGSize)size currentTime:(CMTime)currentTime
-{
-    NSString *assetKey = [NSString stringWithFormat:@"%p", imageGenerator];
-    NSMutableDictionary *assetDict = self.cacheDict[assetKey];
-    
-    for (NSString *key in self.cacheDict.allKeys)
-    {
-        if (![assetKey isEqualToString:key])
-        {
-            [self.cacheDict removeObjectForKey:key];
-        }
-    }
-    
-    if (assetDict.allKeys.count < MaxCacheImageCount)
-    {
-        return;
-    }
-    
-    for (NSString *key in assetDict.allKeys)
-    {
-        FZMediaSourceAVAssetGeneratorCacheObject *obj = assetDict[key];
-        
-        if (!CGSizeEqualToSize(obj.size, size))
-        {
-            [assetDict removeObjectForKey:key];
-        }
-    }
-    
-    if (assetDict.count < MaxCacheImageCount)
-    {
-        return;
-    }
-    
-    int leftCount = 0;
-    int rightCount = 0;
-    
-    for (int i = 0; i < 5; i ++)
-    {
-        NSArray *keys = assetDict.allKeys;
-        FZMediaSourceAVAssetGeneratorCacheObject *obj = assetDict[keys[i]];
-        if (CMTimeGetSeconds(obj.time) < CMTimeGetSeconds(currentTime))
-        {
-            leftCount ++;
-        }
-        else
-        {
-            rightCount ++;
-        }
-    }
-    
-    for (NSString *key in assetDict.allKeys)
-    {
-        FZMediaSourceAVAssetGeneratorCacheObject *obj = assetDict[key];
-        
-        if (leftCount > rightCount)
-        {
-            if (CMTimeGetSeconds(obj.time) < CMTimeGetSeconds(currentTime) - AdjustCacheImageTime)
-            {
-                [assetDict removeObjectForKey:key];
-            }
-        }
-        else
-        {
-            if (CMTimeGetSeconds(obj.time) > CMTimeGetSeconds(currentTime) + AdjustCacheImageTime)
-            {
-                [assetDict removeObjectForKey:key];
-            }
-        }
-    }
 }
 
 - (NSMutableDictionary *)cacheDict
